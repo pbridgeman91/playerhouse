@@ -167,7 +167,7 @@ contract slotgame {
         for (uint8 r; r < NUM_ROWS; ++r) {
             for (uint8 c; c < NUM_REELS; ++c) {
                 if (state == 0) state = uint256(keccak256(abi.encodePacked(seed, r, c)));
-                uint16 rnd = uint16(state % 62); // 0-61
+                uint16 rnd = uint16(state % 62);
                 state >>= 16;
 
                 uint8 s = _pickSym(rnd);

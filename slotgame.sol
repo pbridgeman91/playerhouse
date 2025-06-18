@@ -29,9 +29,9 @@ contract slotgame {
     uint8   public constant MAX_LINES = 20; 
 
     /* ---------- Immutable Addresses ---------- */
-    address public immutable owner;   // contract owner / house
-    IERC20  public immutable usdc;    // USDC token (6 decimals)
-    IDirectFundingConsumer public immutable vrf; // VRF seed provider
+    address public immutable owner;   
+    IERC20  public immutable usdc;    
+    IDirectFundingConsumer public immutable vrf;
 
     /* ---------- Player State ---------- */
     struct Bet {
@@ -40,9 +40,9 @@ contract slotgame {
         uint168 _pad;   
     }
 
-    mapping(address => uint8)   public freeSpins;  // remaining free spins per player
-    mapping(address => uint256) public nonces;     // per-player spin nonce
-    mapping(address => Bet)     private lastBet;   // last paid bet (used during free-spins)
+    mapping(address => uint8)   public freeSpins;  
+    mapping(address => uint256) public nonces;     
+    mapping(address => Bet)     private lastBet;  
 
     /* ---------- Events ---------- */
     event SpinResult(
@@ -93,7 +93,7 @@ contract slotgame {
             require(usdc.transferFrom(player, address(this), 1), "micro pay fail"); // tx fail micro fee
         } else {
             require(numLines >= 10 && numLines <= 20, "lines");
-            require(bet * numLines >= 2_000_000 && bet * numLines <= 10_000_000, "bet"); //$2-$10 bet
+            require(bet * numLines >= 2_000_000 && bet * numLines <= 10_000_000, "bet"); 
             require(usdc.transferFrom(player, address(this), bet * numLines), "pay fail");
             usedBet   = bet;
             usedLines = numLines;
@@ -101,7 +101,7 @@ contract slotgame {
         }
 
         /** ---- Fetch / refresh random seed ---- */
-        vrf.requestRandomWords(true); // will refresh every 200 spins in vrf.sol //call chainlink VRF
+        vrf.requestRandomWords(true); // will refresh every 200 spins in vrf.sol // call chainlink VRF
         bytes32 seed = keccak256(
             abi.encodePacked(vrf.getSeed(), secret, player, nonces[player]++)
         );

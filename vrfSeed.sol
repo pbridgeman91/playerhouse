@@ -14,16 +14,16 @@ contract DirectFundingConsumer is VRFV2PlusWrapperConsumerBase, ConfirmedOwner {
 
     /* ─────────────── structs / storage ─────────────── */
     struct RequestStatus {
-        uint256 paid;        // LINK / native paid
-        bool    fulfilled;   // callback done
-        uint256 randomWord;  // first word only, stored privately
+        uint256 paid;        
+        bool    fulfilled;   
+        uint256 randomWord; 
     }
 
-    mapping(uint256 => RequestStatus) private s_requests;  // ‼️  made private
+    mapping(uint256 => RequestStatus) private s_requests;  
     uint256[] public  requestIds;
     uint256  public  lastRequestId;
 
-    uint256 private globalSeed;      // ‼️  not public any more
+    uint256 private globalSeed;      
     uint256 public  requestCount;
 
     /* ───────────────  VRF config  ─────────────── */
@@ -110,7 +110,6 @@ contract DirectFundingConsumer is VRFV2PlusWrapperConsumerBase, ConfirmedOwner {
     }
 
     /* ──────────────────── owner helpers ──────────────────── */
-    /** Lightweight status helper that does NOT leak the random word. */
     function getRequestStatus(uint256 reqId)
         external view onlyOwner
         returns (uint256 paid, bool fulfilled)

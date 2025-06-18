@@ -103,8 +103,11 @@ This contract securely provides randomness via Chainlink VRF.
 🔒 While Chainlink VRF provides verifiable randomness, it alone isn’t enough.
 Without an additional off-chain secret, attackers could simulate outcomes before sending transactions.
 By requiring a player-supplied secret (only known off-chain at the time of the call), we guarantee:
+
 Front-running resistance — spin results can’t be predicted or precomputed from calldata
+
 Replay protection — every spin is unique, even with the same bet and lines
+
 True per-spin entropy — deterministic randomness that stays tamper-proof
 
 Reels are generated using this combined entropy

@@ -101,7 +101,7 @@ contract slotgame {
         }
 
         /** ---- Fetch / refresh random seed ---- */
-        vrf.requestRandomWords(true); // call chainlink VRF. Will refresh every 200 spins in vrf.sol
+        vrf.requestRandomWords(true); // Call chainlink VRF. Will refresh every 200 spins in vrf.sol
         bytes32 seed = keccak256(
             abi.encodePacked(vrf.getSeed(), secret, player, nonces[player]++)
         );

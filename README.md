@@ -29,7 +29,7 @@ This repo contains two key contracts:
 
 ---
 
-## 1. `freesspinGASfnalMachine.sol`
+## 1. `slotgame.sol`
 
 This is the **core game engine**. It implements:
 

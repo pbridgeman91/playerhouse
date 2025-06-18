@@ -4,7 +4,7 @@
 
 
 ## 🎮 Why This Matters
-In traditional casinos, there’s a regulator called **Gaming**. Their job is to audit machines/shuffles, verify odds, and protect players from being scammed. Online casinos—especially crypto ones—don’t have this. They operate offshore, manipulate backend odds, and stall or deny withdrawals.
+In traditional casinos, regulators like **Gaming Control Boards** audit machines/shuffles, verify odds, and protect players from being scammed. Online casinos—especially crypto ones—don’t have this. They operate offshore, manipulate backend odds, and stall or deny withdrawals.
 
 **PlayerHouse removes the need for trust by putting all logic—spin, payout, bonus, randomness—on-chain. The smart contract *is* the regulator.**
 

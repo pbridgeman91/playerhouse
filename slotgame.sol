@@ -22,13 +22,11 @@ contract slotgame {
     /* ---------- Game Constants ---------- */
     uint8  public constant NUM_ROWS   = 3;
     uint8  public constant NUM_REELS  = 5;
-
-    // Symbol indices
     uint8  public constant WILD  = 7;
-    uint8  public constant FS    = 8; // Free-Spin symbol
-    uint8  public constant BONUS = 9; // Bonus symbol
-    uint256 public constant MAX_WIN  = 750e6; // 750 USDC (6-decimals)
-    uint8   public constant MAX_LINES = 20;   // fixed pay-lines
+    uint8  public constant FS    = 8; 
+    uint8  public constant BONUS = 9; 
+    uint256 public constant MAX_WIN  = 750e6; 
+    uint8   public constant MAX_LINES = 20; 
 
     /* ---------- Immutable Addresses ---------- */
     address public immutable owner;   // contract owner / house
@@ -37,9 +35,9 @@ contract slotgame {
 
     /* ---------- Player State ---------- */
     struct Bet {
-        uint80 amount;  // unit bet (6-decimals)
-        uint8  lines;   // number of active lines
-        uint168 _pad;   // reserved for future use / storage packing
+        uint80 amount;  
+        uint8  lines;   
+        uint168 _pad;   
     }
 
     mapping(address => uint8)   public freeSpins;  // remaining free spins per player
@@ -92,7 +90,7 @@ contract slotgame {
             require(b.amount > 0 && b.lines > 0, "no base bet");
             usedBet   = b.amount;
             usedLines = b.lines;
-            unchecked { freeSpins[player]--; }          // consume one free-spin
+            unchecked { freeSpins[player]--; }        
             require(usdc.transferFrom(player, address(this), 1), "micro pay fail"); // tx fail micro fee
         } else {
             // Paid spin sanity checks
@@ -101,7 +99,7 @@ contract slotgame {
             require(usdc.transferFrom(player, address(this), bet * numLines), "pay fail");
             usedBet   = bet;
             usedLines = numLines;
-            lastBet[player] = Bet(uint80(bet), numLines, 0); // save for future free-spins
+            lastBet[player] = Bet(uint80(bet), numLines, 0); 
         }
 
         /** ---- Fetch / refresh random seed ---- */
@@ -262,7 +260,7 @@ contract slotgame {
         // Prize multipliers
         uint8[5] memory p = [10, 20, 40, 60, 80];
 
-        uint8 shots = bCnt > 5 ? 5 : bCnt; // max 5 picks
+        uint8 shots = bCnt > 5 ? 5 : bCnt; 
         picks = new uint8[](shots);
 
         uint256 state = uint256(seed);
@@ -273,7 +271,7 @@ contract slotgame {
                 state = uint256(keccak256(abi.encodePacked(seed, i, "B")));
             }
 
-            uint16 rnd = uint16(state % 100); //  [0..99]
+            uint16 rnd = uint16(state % 100); 
             state >>= 16;
 
             // Weighted pick

@@ -86,16 +86,14 @@ contract slotgame {
 
         /** ---- Handle paid spin vs. free-spin ---- */
         if (useFS) {
-            // Must have a saved base bet + lines from previous paid spin
             require(b.amount > 0 && b.lines > 0, "no base bet");
             usedBet   = b.amount;
             usedLines = b.lines;
             unchecked { freeSpins[player]--; }        
             require(usdc.transferFrom(player, address(this), 1), "micro pay fail"); // tx fail micro fee
         } else {
-            // Paid spin sanity checks
             require(numLines >= 10 && numLines <= 20, "lines");
-            require(bet * numLines >= 2_000_000 && bet * numLines <= 10_000_000, "bet");
+            require(bet * numLines >= 2_000_000 && bet * numLines <= 10_000_000, "bet"); //$2-$10 bet
             require(usdc.transferFrom(player, address(this), bet * numLines), "pay fail");
             usedBet   = bet;
             usedLines = numLines;
@@ -103,7 +101,7 @@ contract slotgame {
         }
 
         /** ---- Fetch / refresh random seed ---- */
-        vrf.requestRandomWords(true); // will refresh every 200 spins in vrf.sol
+        vrf.requestRandomWords(true); // will refresh every 200 spins in vrf.sol //call chainlink VRF
         bytes32 seed = keccak256(
             abi.encodePacked(vrf.getSeed(), secret, player, nonces[player]++)
         );

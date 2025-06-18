@@ -51,10 +51,10 @@ contract DirectFundingConsumer is VRFV2PlusWrapperConsumerBase, ConfirmedOwner {
 
     /* ──────────────────── user-facing API ──────────────────── */
     function requestRandomWords(bool nativePay) external onlySlot returns (uint256 reqId) {
-        // decide if we actually need a new seed (every 30 spins or first time)
+        // decide if we actually need a new seed (every 200 spins or first time)
         requestCount++;
         bool fresh = (globalSeed == 0 || requestCount % 200 == 0);
-        if (!fresh) return 0;                       // keep old seed
+        if (!fresh) return 0;                       
 
         bytes memory extra = VRFV2PlusClient._argsToBytes(
             VRFV2PlusClient.ExtraArgsV1({nativePayment: nativePay})

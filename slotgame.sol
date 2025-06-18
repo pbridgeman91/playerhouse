@@ -12,7 +12,7 @@ interface IDirectFundingConsumer {
     function getSeed() external view returns (uint256);
 }
 
-contract freesspinGASfnalMachine {
+contract slotgame {
     uint8  public constant NUM_ROWS  = 3;
     uint8  public constant NUM_REELS = 5;
     uint8  public constant WILD      = 7;

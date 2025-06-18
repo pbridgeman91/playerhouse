@@ -18,7 +18,7 @@ contract slotgame {
     uint8  public constant WILD      = 7;
     uint8  public constant FS        = 8;
     uint8  public constant BONUS     = 9;
-    uint256 public constant MAX_WIN  = 500e6;
+    uint256 public constant MAX_WIN  = 750e6;
     uint8   public constant MAX_LINES = 20;
 
     address public immutable owner;

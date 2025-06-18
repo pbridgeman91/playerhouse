@@ -88,8 +88,6 @@ This contract securely provides randomness via Chainlink VRF.
 | `getSeed()`          | Only slot contract |
 | `requestRandomWords()` | Only slot contract |
 | `updateSlotAddr()`   | Only owner |
-| `withdraw*()`        | Only owner |
-
 
 ---
 

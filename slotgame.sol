@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /* ────────────────────────── Interfaces ────────────────────────── */
 
-/// Minimal ERC-20 interface 
+
 interface IERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
     function transferFrom(address from, address to, uint256 amount) external returns (bool);
@@ -28,12 +28,12 @@ contract slotgame {
     uint256 public constant MAX_WIN  = 750e6; 
     uint8   public constant MAX_LINES = 20; 
 
-    /* ---------- Immutable Addresses ---------- */
+   
     address public immutable owner;   
     IERC20  public immutable usdc;    
     IDirectFundingConsumer public immutable vrf;
 
-    /* ---------- Player State ---------- */
+   
     struct Bet {
         uint80 amount;  
         uint8  lines;   
@@ -114,13 +114,11 @@ contract slotgame {
         (uint256 win, uint8 fsCnt, uint8 bonusCnt) =
             _evaluate(pattern, usedLines, usedBet);
 
-        /** ---- Award new free-spins ---- */
         if (fsCnt >= 3) {
             uint8 newFS = fsCnt == 3 ? 3 : fsCnt == 4 ? 4 : 5;
             freeSpins[player] += newFS;
         }
 
-        /** ---- Bonus round prize ---- */
         uint256 bonusPrize;
         uint8[] memory picks;
         if (bonusCnt >= 3) {
@@ -180,7 +178,6 @@ contract slotgame {
         }
     }
 
-    /// Symbol weights (10,10,10,9,7,5,3,4,2,2 = 62)
     function _pickSym(uint16 rnd) private pure returns (uint8) {
         unchecked {
             if (rnd < 10) return 0;
@@ -221,7 +218,7 @@ contract slotgame {
                 uint8 hits = 1;
                 uint8 c    = 1;
 
-                // If first reel is WILD, roll forward until first non-wild
+                // No wild on first column
                 while (sym == WILD && c < NUM_REELS) {
                     sym = g[_row(l, c)][c];
                     hits++;
@@ -253,9 +250,8 @@ contract slotgame {
     function _bonusPrize(bytes32 seed, uint8 bCnt, uint256 bet)
         private pure returns (uint256 sum, uint8[] memory picks)
     {
-        // Weight array (sum = 100)
+        
         uint8[5] memory w = [50, 25, 15, 7, 3];
-        // Prize multipliers
         uint8[5] memory p = [10, 20, 40, 60, 80];
 
         uint8 shots = bCnt > 5 ? 5 : bCnt; 
@@ -272,7 +268,6 @@ contract slotgame {
             uint16 rnd = uint16(state % 100); 
             state >>= 16;
 
-            // Weighted pick
             uint16 acc;
             uint8 pick;
             for (uint8 j; j < 5; ++j) {
@@ -287,12 +282,10 @@ contract slotgame {
 
     /* ────────────────────────── Owner Utilities ────────────────────────── */
 
-    /// @notice Withdraw accumulated USDC (house profit)
     function withdrawUSDC(address to, uint256 amt) external onlyOwner {
         require(usdc.transfer(to, amt), "xfer");
     }
 
-    /// @notice Helper to view USDC held by the contract
     function usdcBalance() external view returns (uint256) {
         return usdc.balanceOf(address(this));
     }

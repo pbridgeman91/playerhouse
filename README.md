@@ -24,7 +24,7 @@ In traditional casinos, regulators like **Gaming Control Boards** audit machines
 
 This repo contains two key contracts:
 
-- [`slotmachine.sol`](#1-freesspingasfnalmachinesol) — the main slot machine game logic  
+- [`slotgame.sol`](#1-freesspingasfnalmachinesol) — the main slot machine game logic  
 - [`vrf.sol`](#2-vrfsoldirectfundingconsumer) — randomness provider via Chainlink VRF  
 
 ---

@@ -4,7 +4,7 @@
 
 
 ## 🎮 Why This Matters
-In traditional casinos, regulators like Gaming Control Boards audit machines, verify odds, and ultimately control the entire gaming industry. The casino business is owned by the state. Our mission is to take that power back—by making games transparent, decentralized, and fully on-chain.
+In traditional casinos, regulators like Gaming Control Boards audit machines, verify odds, and ultimately control the entire gaming industry. The casino business is owned by the state. We absolutely can take that power back—by making great onchain gaming experiences.
 
 **PlayerHouse removes the need for trust by putting all logic—spin, payout, bonus, randomness—on-chain. The smart contract *is* the regulator.**
 

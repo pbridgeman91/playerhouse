@@ -78,7 +78,7 @@ const NETWORKS = {
   arbitrum: {
     chain: arbitrum,
     publicRpc: "https://arb1.arbitrum.io/rpc",
-    bundlerRpc: "https://rpc.zerodev.app/api/v3/7da0dc73-0b2f-4380-a38b-f6dd3a6430d1/chain/42161",
+    bundlerRpc: "https://rpc.zerodev.app/api/v3/ZERODEVID/chain/42161",
     slotAddr: "0xeC3Ad304186235E68CF7Ee88c7da258a87AbF0B8",
     usdcAddr: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     supportsCirclePaymaster: true,
@@ -86,7 +86,7 @@ const NETWORKS = {
   arbitrumSepolia: {
     chain: arbitrumSepolia,
     publicRpc: "https://sepolia-rollup.arbitrum.io/rpc",
-    bundlerRpc: "https://rpc.zerodev.app/api/v3/7da0dc73-0b2f-4380-a38b-f6dd3a6430d1/chain/421614",
+    bundlerRpc: "https://rpc.zerodev.app/api/v3/ZERODEVID/chain/421614",
     slotAddr: "0x9Dc3e731cfa840c83253b4e16155E0b8a74399ab",
     usdcAddr: "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
     supportsCirclePaymaster: true,
@@ -94,7 +94,7 @@ const NETWORKS = {
  /* base: {
     chain: base,
     publicRpc: "https://sepolia.base.org",
-    bundlerRpc: "https://rpc.zerodev.app/api/v3/7da0dc73-0b2f-4380-a38b-f6dd3a6430d1/chain/84532",
+    bundlerRpc: "https://rpc.zerodev.app/api/v3/ZERODEVID/chain/84532",
     slotAddr: "0xa446E73bD03Ec992b305a91140FdE6aC61c85C96",
     usdcAddr: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
     supportsCirclePaymaster: true,
@@ -102,7 +102,7 @@ const NETWORKS = {
   baseSepolia: {
     chain: baseSepolia,
     publicRpc: "https://sepolia.base.org",
-    bundlerRpc: "https://rpc.zerodev.app/api/v3/7da0dc73-0b2f-4380-a38b-f6dd3a6430d1/chain/84532",
+    bundlerRpc: "https://rpc.zerodev.app/api/v3/ZERODEVID/chain/84532",
     slotAddr: "0xa446E73bD03Ec992b305a91140FdE6aC61c85C96",
     usdcAddr: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
     supportsCirclePaymaster: true,
